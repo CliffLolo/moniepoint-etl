@@ -85,6 +85,13 @@ CREATE TABLE IF NOT EXISTS moniepoint_metrics (
 );
 
 ```
+
+## Screenshots
+![Airflow dag screenshot](https://github.com/CliffLolo/moniepoint-etl/assets/41656028/fe22dffa-ac0c-460a-b43f-8bdfa8cb2492)
+![Airlfow logs screenshot](https://github.com/CliffLolo/moniepoint-etl/assets/41656028/a7d2b009-55d5-415c-b902-946e05beeba5)
+![Database containing data screenshot](https://github.com/CliffLolo/moniepoint-etl/assets/41656028/0f11e0a8-b7ef-4172-8ef3-b17bac5199ec)
+
+
 ## Documentation
 
 [Clickhouse Documentation](https://clickhouse.com/docs)
