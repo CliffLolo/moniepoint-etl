@@ -54,7 +54,7 @@ def run_script():
 
     for row in result.result_rows:
         sqlite_cursor.execute('''
-        INSERT INTO your_table VALUES (?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO moniepoint_metrics VALUES (?, ?, ?, ?, ?, ?, ?)
         ''', row)
 
     sqlite_conn.commit()
