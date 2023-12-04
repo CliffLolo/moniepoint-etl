@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from scripts.etl import run_script
+from scripts.etl import extract_data, insert_data
 
 default_args = {
     'owner': 'Clifford Frempong',
@@ -13,17 +13,21 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
-dag = DAG(
-    'moniepoint-etl-dag',
-    default_args=default_args,
-    description='This Airflow DAG orchestrates the execution of an ETL process. The ETL process extracts data from a ClickHouse database, performs necessary transformations, and loads the results into a SQLite database.',
-     schedule_interval=None,
-)
+with DAG('moniepoint-etl-dag', start_date=datetime(2022, 1, 1), default_args=default_args, description='This Airflow DAG orchestrates the execution of an ETL process. The ETL process extracts data from a ClickHouse database, performs necessary transformations, and loads the results into a SQLite database.',
+        schedule_interval=None, catchup=False) as dag:
 
-run_etl = PythonOperator(
-    task_id='execute_script',
-    python_callable=run_script,
-    dag=dag,
-)
+    # Task 1: Extract data
+    extract = PythonOperator(
+        task_id='extract',
+        python_callable=extract_data,
+    )
 
-run_etl
+    # Task 2: Load data
+    load = PythonOperator(
+        task_id='load',
+        python_callable=insert_data, 
+        op_args=[extract.output],  
+        provide_context=True,
+    )
+
+    extract >> load
