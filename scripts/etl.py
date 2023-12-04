@@ -12,7 +12,7 @@ CLICKHOUSE_USERNAME = os.getenv('CLICKHOUSE_USERNAME')
 CLICKHOUSE_PASSWORD = os.getenv('CLICKHOUSE_PASSWORD')
 DATABASE_NAME = os.getenv('DATABASE_NAME')
 
-def run_script():
+def extract_data():
     client = clickhouse_connect.get_client(
         host=CLICKHOUSE_CLOUD_HOSTNAME, port=CLICKHOUSE_PORT, username=CLICKHOUSE_USERNAME, password=CLICKHOUSE_PASSWORD)
 
@@ -36,7 +36,9 @@ def run_script():
     '''
 
     result = client.query(QUERY)
+    return result.result_rows
 
+def insert_data(data):
     sqlite_conn = sqlite3.connect(DATABASE_NAME)
     sqlite_cursor = sqlite_conn.cursor()
 
@@ -52,7 +54,7 @@ def run_script():
     )
     ''')
 
-    for row in result.result_rows:
+    for row in data:
         sqlite_cursor.execute('''
         INSERT INTO moniepoint_metrics VALUES (?, ?, ?, ?, ?, ?, ?)
         ''', row)
