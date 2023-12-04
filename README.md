@@ -87,9 +87,9 @@ CREATE TABLE IF NOT EXISTS moniepoint_metrics (
 ```
 
 ## Screenshots
-![Airflow dag screenshot](https://github.com/CliffLolo/moniepoint-etl/assets/41656028/fe22dffa-ac0c-460a-b43f-8bdfa8cb2492)
-![Airlfow logs screenshot](https://github.com/CliffLolo/moniepoint-etl/assets/41656028/a7d2b009-55d5-415c-b902-946e05beeba5)
-![Database containing data screenshot](https://github.com/CliffLolo/moniepoint-etl/assets/41656028/0f11e0a8-b7ef-4172-8ef3-b17bac5199ec)
+![Airflow dag screenshot](https://github.com/CliffLolo/aws-glue-workshop/assets/41656028/7000125e-4cee-4f69-9092-c204847658c8)
+![Airlfow logs screenshot](https://github.com/CliffLolo/aws-glue-workshop/assets/41656028/d0ef5202-611b-459f-af27-455b1c35b996)
+![Database containing data screenshot](https://github.com/CliffLolo/aws-glue-workshop/assets/41656028/168d95fd-a41f-4ab6-92da-101af9e58d92)
 
 
 ## Documentation
