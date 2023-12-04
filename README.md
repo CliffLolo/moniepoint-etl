@@ -72,7 +72,7 @@ ORDER BY
 ```
 
 ## SQLite Table
-The results are stored in a SQLite table named your_table with the following schema:
+The results are stored in a SQLite table named moniepoint_metrics with the following schema:
 ```
 CREATE TABLE IF NOT EXISTS moniepoint_metrics (
     month TEXT,
